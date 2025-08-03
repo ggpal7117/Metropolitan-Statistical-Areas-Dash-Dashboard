@@ -2609,5 +2609,7 @@ def update_income_by_edu_bar(selected_msa):
 # # # plot(fig_msa_pop)
 
 if __name__ == '__main__':
-    app.run(debug = True, port = 7117)
-    #app.run(debug=False, host='0.0.0.0', port=10000)
+    app.run(debug=False, host='0.0.0.0', port=10000)
+    ## app.run(debug = True, port = 7117)
+    
+
