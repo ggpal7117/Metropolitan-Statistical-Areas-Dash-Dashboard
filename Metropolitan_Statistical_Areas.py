@@ -1607,6 +1607,7 @@ demographics = html.Div(children=[
         ], style={
             'display': 'flex',
             'flexWrap': 'wrap',
+            'flexDirection': 'row',
             'width': '100%',
             'maxWidth': '1200px',
             'margin': '0 auto'
@@ -2612,4 +2613,5 @@ if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0', port=10000)
     ## app.run(debug = True, port = 7117)
     
+
 
