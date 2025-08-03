@@ -36,14 +36,9 @@ from pathlib import Path
 # census_key = keys_df.query('Key_Name == "Census"').Key.values[0]
 # fred_key = keys_df.query('Key_Name == "Fred"').Key.values[0]
 
-file_path_keys = os.path.join(os.path.dirname(__file__), 'api_keys.xls')
-keys_df = pd.read_csv(file_path_keys)
 
-census_key = keys_df.query('Key_Name == "Census"').Key.values[0]
-fred_key = keys_df.query('Key_Name == "Fred"').Key.values[0]
-
-# census_key = os.getenv("CENSUS_API_KEY")
-# fred_key = os.getenv("FRED_API_KEY")
+census_key = os.getenv("CENSUS_API_KEY")
+fred_key = os.getenv("FRED_API_KEY")
 
 
 fred = Fred(api_key=fred_key)
@@ -2616,6 +2611,7 @@ if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0', port=10000)
     ## app.run(debug = True, port = 7117)
     
+
 
 
 
