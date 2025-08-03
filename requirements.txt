@@ -1,0 +1,14 @@
+dash
+plotly
+numpy
+pandas
+seaborn
+matplotlib
+requests
+json5
+pygris
+geopandas
+fredapi
+python-dotenv
+gunicorn
+lxml
