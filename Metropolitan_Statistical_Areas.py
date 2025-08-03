@@ -1559,7 +1559,12 @@ demographics = html.Div(children=[
         html.Br(),
 
         html.Div([
-            html.H2("Time Series & Age", style={'fontSize': '24px', 'color': '#555', 'textAlign': 'center'}),
+            html.H2("Time Series & Age", style={
+                'fontSize': '24px',
+                'color': '#555',
+                'textAlign': 'center',
+                'width': '100%'
+            }),
         
             html.Div([
                 # Left: Time Series
@@ -1574,11 +1579,14 @@ demographics = html.Div(children=[
                         labelStyle={'display': 'inline-block', 'marginRight': '20px'},
                         style={'marginBottom': '20px', 'textAlign': 'center'}
                     ),
-                    dcc.Graph(id='time_series_graph')
+                    dcc.Graph(id='time_series_graph', config={'responsive': True})
                 ], style={
-                    'width': '48%',
+                    'width': '49%',
+                    'minWidth': '350px',
+                    'maxWidth': '600px',
                     'padding': '10px',
-                    'boxSizing': 'border-box'
+                    'boxSizing': 'border-box',
+                    'flexShrink': '0'
                 }),
         
                 # Right: Age Distribution
@@ -1594,22 +1602,27 @@ demographics = html.Div(children=[
                         labelStyle={'display': 'inline-block', 'marginRight': '20px'},
                         style={'marginBottom': '20px', 'textAlign': 'center'}
                     ),
-                    dcc.Graph(id='age_distribution_graph')
+                    dcc.Graph(id='age_distribution_graph', config={'responsive': True})
                 ], style={
-                    'width': '48%',
+                    'width': '49%',
+                    'minWidth': '350px',
+                    'maxWidth': '600px',
                     'padding': '10px',
-                    'boxSizing': 'border-box'
-                })
+                    'boxSizing': 'border-box',
+                    'flexShrink': '0'
+                }),
             ], style={
                 'display': 'flex',
                 'flexDirection': 'row',
                 'flexWrap': 'wrap',
                 'justifyContent': 'space-between',
+                'alignItems': 'flex-start',
                 'width': '100%',
                 'maxWidth': '1200px',
                 'margin': '0 auto'
             })
-        ]),
+        ], style={'width': '100%'})
+
 
         html.Br(), 
 
@@ -2611,6 +2624,7 @@ if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0', port=10000)
     ## app.run(debug = True, port = 7117)
     
+
 
 
 
