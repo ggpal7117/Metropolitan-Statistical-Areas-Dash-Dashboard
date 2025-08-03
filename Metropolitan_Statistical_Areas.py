@@ -1564,54 +1564,57 @@ demographics = html.Div(children=[
         html.Br(),
 
         html.Div([
-            html.H2("Time Series & Age", style={'fontSize': '24px', 'color': '#555'}),
-
+            html.H2("Time Series & Age", style={'fontSize': '24px', 'color': '#555', 'textAlign': 'center'}),
+        
             html.Div([
                 # Left: Time Series
                 html.Div([
-                    html.Div([
-                        dcc.RadioItems(
-                            id='time_series_buttons',
-                            options=[
-                                {'label': "Population", 'value': "Population"},
-                                {'label': "Median Income", 'value': "Median_Income"}
-                            ],
-                            value="Population",
-                            labelStyle={'display': 'inline-block', 'margin-right': '20px'},
-                            style={'marginBottom': '20px', 'textAlign': 'center'}
-                        )
-                    ], style={'display': 'flex', 'justifyContent': 'center'}),
-                    
+                    dcc.RadioItems(
+                        id='time_series_buttons',
+                        options=[
+                            {'label': "Population", 'value': "Population"},
+                            {'label': "Median Income", 'value': "Median_Income"}
+                        ],
+                        value="Population",
+                        labelStyle={'display': 'inline-block', 'marginRight': '20px'},
+                        style={'marginBottom': '20px', 'textAlign': 'center'}
+                    ),
                     dcc.Graph(id='time_series_graph')
-                ], style={'flex': '1', 'padding': '10px'}),
-
+                ], style={
+                    'width': '48%',
+                    'padding': '10px',
+                    'boxSizing': 'border-box'
+                }),
+        
                 # Right: Age Distribution
                 html.Div([
-                    html.Div([
-                        dcc.RadioItems(
-                            id='age_gender_selector',
-                            options=[
-                                {'label': 'All', 'value': 'All'},
-                                {'label': 'Male', 'value': 'Male'},
-                                {'label': 'Female', 'value': 'Female'}
-                            ],
-                            value='All',
-                            labelStyle={'display': 'inline-block', 'margin-right': '20px'},
-                            style={'marginBottom': '20px', 'textAlign': 'center'}
-                        )
-                    ], style={'display': 'flex', 'justifyContent': 'center'}),
-                    
+                    dcc.RadioItems(
+                        id='age_gender_selector',
+                        options=[
+                            {'label': 'All', 'value': 'All'},
+                            {'label': 'Male', 'value': 'Male'},
+                            {'label': 'Female', 'value': 'Female'}
+                        ],
+                        value='All',
+                        labelStyle={'display': 'inline-block', 'marginRight': '20px'},
+                        style={'marginBottom': '20px', 'textAlign': 'center'}
+                    ),
                     dcc.Graph(id='age_distribution_graph')
-                ], style={'flex': '1', 'padding': '10px'})
-            ], style={'display': 'flex', 'width': '100%', 'flexWrap': 'wrap'})
-        ], style={
-            'display': 'flex',
-            'flexWrap': 'wrap',
-            'flexDirection': 'row',
-            'width': '100%',
-            'maxWidth': '1200px',
-            'margin': '0 auto'
-        }),
+                ], style={
+                    'width': '48%',
+                    'padding': '10px',
+                    'boxSizing': 'border-box'
+                })
+            ], style={
+                'display': 'flex',
+                'flexDirection': 'row',
+                'flexWrap': 'wrap',
+                'justifyContent': 'space-between',
+                'width': '100%',
+                'maxWidth': '1200px',
+                'margin': '0 auto'
+            })
+        ]),
 
         html.Br(), 
 
@@ -2613,5 +2616,6 @@ if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0', port=10000)
     ## app.run(debug = True, port = 7117)
     
+
 
 
