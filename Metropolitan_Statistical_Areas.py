@@ -1247,7 +1247,8 @@ app.layout = html.Div(
         ),
 
         html.Div(id="page-content")
-    ]
+    ],
+    style={'width': '100%', 'maxWidth': '1400px', 'margin': '0 auto'}
 )
 
 # **-----------------------------------------------------------------  HOME PAGE -----------------------------------------------------------------**
@@ -1480,238 +1481,228 @@ maps = html.Div(
 
 # ------------------------------------------------------------------------ DEMOGRAPHICS PAGE ------------------------------------------------------------------------
 demographics = html.Div(children=[
-        html.H1("Demographics", style={'border':'3px solid black'}),
+    html.H1("Demographics", style={'border': '3px solid black'}),
 
-        dcc.Dropdown(
-            id = "Dem1_Dropdown",
-            options=[{"label":name, "value":name} for name in top_100_msa],
-            value = top_100_msa[0],
-            style={'width':'520px', 'height':'67px', 'border':'3px solid black', 'margin':'0 auto'}
-        ),
+    dcc.Dropdown(
+        id="Dem1_Dropdown",
+        options=[{"label": name, "value": name} for name in top_100_msa],
+        value=top_100_msa[0],
+        style={'width': '520px', 'height': '67px', 'border': '3px solid black', 'margin': '0 auto'}
+    ),
 
-        html.Br(),
-        html.H2("General Information", style={'fontSize': '24px', 'color': '#555', 'marginBottom': '20px'}),
-     
-        html.Div(
-            id="msa_summary_metrics",
-            children=[
-                html.Div([
-                    html.Div("👥", style={'fontSize': '28px'}),
-                    html.H4("Population", style={'margin': '4px 0', 'color': '#2C3E50'}),
-                    html.Div(id="metric_population", style={'fontSize': '20px', 'fontWeight': 'bold', 'color': '#1F618D'})
-                ], style={
-                    'flex': '1',
-                    'padding': '16px',
-                    'borderRadius': '12px',
-                    'backgroundColor': '#EAF2F8',
-                    'boxShadow': '0 1px 4px rgba(0,0,0,0.1)',
-                    'margin': '0 10px'
-                }),
+    html.Br(),
+    html.H2("General Information", style={'fontSize': '24px', 'color': '#555', 'marginBottom': '20px'}),
 
-                html.Div([
-                    html.Div("💰", style={'fontSize': '28px'}),
-                    html.H4("Median Single-Earner Income", style={'margin': '4px 0', 'color': '#2C3E50'}),
-                    html.Div(id="metric_income", style={'fontSize': '20px', 'fontWeight': 'bold', 'color': '#117864'})
-                ], style={
-                    'flex': '1',
-                    'padding': '16px',
-                    'borderRadius': '12px',
-                    'backgroundColor': '#E8F8F5',
-                    'boxShadow': '0 1px 4px rgba(0,0,0,0.1)',
-                    'margin': '0 10px'
-                }),
+    html.Div(
+        id="msa_summary_metrics",
+        children=[
+            html.Div([
+                html.Div("\U0001F465", style={'fontSize': '28px'}),
+                html.H4("Population", style={'margin': '4px 0', 'color': '#2C3E50'}),
+                html.Div(id="metric_population", style={'fontSize': '20px', 'fontWeight': 'bold', 'color': '#1F618D'})
+            ], style={
+                'flex': '1',
+                'padding': '16px',
+                'borderRadius': '12px',
+                'backgroundColor': '#EAF2F8',
+                'boxShadow': '0 1px 4px rgba(0,0,0,0.1)',
+                'margin': '0 10px'
+            }),
 
-                html.Div([
-                    html.Div("📊", style={'fontSize': '28px'}),
-                    html.H4("Median Age", style={'margin': '4px 0', 'color': '#2C3E50'}),
-                    html.Div(id="metric_age", style={'fontSize': '20px', 'fontWeight': 'bold', 'color': '#6C3483'})
-                ], style={
-                    'flex': '1',
-                    'padding': '16px',
-                    'borderRadius': '12px',
-                    'backgroundColor': '#F5EEF8',
-                    'boxShadow': '0 1px 4px rgba(0,0,0,0.1)',
-                    'margin': '0 10px'
+            html.Div([
+                html.Div("\U0001F4B0", style={'fontSize': '28px'}),
+                html.H4("Median Single-Earner Income", style={'margin': '4px 0', 'color': '#2C3E50'}),
+                html.Div(id="metric_income", style={'fontSize': '20px', 'fontWeight': 'bold', 'color': '#117864'})
+            ], style={
+                'flex': '1',
+                'padding': '16px',
+                'borderRadius': '12px',
+                'backgroundColor': '#E8F8F5',
+                'boxShadow': '0 1px 4px rgba(0,0,0,0.1)',
+                'margin': '0 10px'
+            }),
+
+            html.Div([
+                html.Div("\U0001F4CA", style={'fontSize': '28px'}),
+                html.H4("Median Age", style={'margin': '4px 0', 'color': '#2C3E50'}),
+                html.Div(id="metric_age", style={'fontSize': '20px', 'fontWeight': 'bold', 'color': '#6C3483'})
+            ], style={
+                'flex': '1',
+                'padding': '16px',
+                'borderRadius': '12px',
+                'backgroundColor': '#F5EEF8',
+                'boxShadow': '0 1px 4px rgba(0,0,0,0.1)',
+                'margin': '0 10px'
+            })
+        ],
+        style={
+            'display': 'flex',
+            'justifyContent': 'center',
+            'textAlign': 'center',
+            'marginBottom': '30px',
+            'marginTop': '20px'
+        }
+    ),
+
+    html.Div([
+        dcc.Graph(id="Pies_Dem", style={
+            'height': '700px',
+            'border': '1px solid #dee2e6',
+            'borderRadius': '8px',
+            'boxShadow': '0 2px 8px rgba(0,0,0,0.1)'
+        })
+    ], style={'textAlign': 'center', 'width': '92.5%', 'margin': '0 auto'}),
+
+    html.Br(),
+
+    html.Div([
+        html.H2("Time Series & Age", style={
+            'fontSize': '24px',
+            'color': '#555',
+            'textAlign': 'center',
+            'width': '100%'
+        }),
+
+        html.Div([
+            html.Div([
+                dcc.RadioItems(
+                    id='time_series_buttons',
+                    options=[
+                        {'label': "Population", 'value': "Population"},
+                        {'label': "Median Income", 'value': "Median_Income"}
+                    ],
+                    value="Population",
+                    labelStyle={'display': 'inline-block', 'marginRight': '20px'},
+                    style={'marginBottom': '20px', 'textAlign': 'center'}
+                ),
+                dcc.Graph(id='time_series_graph', config={'responsive': True})
+            ], style={
+                'width': '49%',
+                'minWidth': '350px',
+                'maxWidth': '600px',
+                'padding': '10px',
+                'boxSizing': 'border-box',
+                'flexShrink': '0'
+            }),
+
+            html.Div([
+                dcc.RadioItems(
+                    id='age_gender_selector',
+                    options=[
+                        {'label': 'All', 'value': 'All'},
+                        {'label': 'Male', 'value': 'Male'},
+                        {'label': 'Female', 'value': 'Female'}
+                    ],
+                    value='All',
+                    labelStyle={'display': 'inline-block', 'marginRight': '20px'},
+                    style={'marginBottom': '20px', 'textAlign': 'center'}
+                ),
+                dcc.Graph(id='age_distribution_graph', config={'responsive': True})
+            ], style={
+                'width': '49%',
+                'minWidth': '350px',
+                'maxWidth': '600px',
+                'padding': '10px',
+                'boxSizing': 'border-box',
+                'flexShrink': '0'
+            })
+        ], style={
+            'display': 'flex',
+            'flexDirection': 'row',
+            'flexWrap': 'wrap',
+            'justifyContent': 'space-between',
+            'alignItems': 'flex-start',
+            'width': '100%',
+            'maxWidth': '1200px',
+            'margin': '0 auto'
+        })
+    ]),
+
+    html.Br(),
+
+    html.Div([
+        html.H2("Immigration Overview", style={
+            'fontSize': '26px',
+            'color': '#333',
+            'marginBottom': '20px',
+            'textAlign': 'center'
+        }),
+
+        html.Div([
+            html.Div([
+                html.Div(id='foreign_born_box', style={
+                    'backgroundColor': '#ffffff',
+                    'padding': '20px',
+                    'borderRadius': '10px',
+                    'boxShadow': '0 4px 12px rgba(0, 0, 0, 0.06)',
+                    'textAlign': 'center',
+                    'border': '1px solid #e1e1e1',
+                    'fontSize': '16px',
+                    'color': '#333'
                 })
-            ],
-            style={
-                'display': 'flex',
-                'justifyContent': 'center',
-                'textAlign': 'center',
-                'marginBottom': '30px',
-                'marginTop': '20px'
-            }
-        ),
-
-        html.Div(
-            children=[
-                dcc.Graph(id = "Pies_Dem", style={
-                    'height': '700px',
-                    'border': '1px solid #dee2e6',
-                    'borderRadius': '8px',
-                    'boxShadow': '0 2px 8px rgba(0,0,0,0.1)'
-                }), 
-                
-            ],
-            style={'text-align':'center', 'display':'inline-block', 'width':'92.5%'}  
-        ),
-
-        html.Br(),
-
-        html.Div([
-            html.H2("Time Series & Age", style={
-                'fontSize': '24px',
-                'color': '#555',
-                'textAlign': 'center',
-                'width': '100%'
-            }),
-        
-            html.Div([
-                # Left: Time Series
-                html.Div([
-                    dcc.RadioItems(
-                        id='time_series_buttons',
-                        options=[
-                            {'label': "Population", 'value': "Population"},
-                            {'label': "Median Income", 'value': "Median_Income"}
-                        ],
-                        value="Population",
-                        labelStyle={'display': 'inline-block', 'marginRight': '20px'},
-                        style={'marginBottom': '20px', 'textAlign': 'center'}
-                    ),
-                    dcc.Graph(id='time_series_graph', config={'responsive': True})
-                ], style={
-                    'width': '49%',
-                    'minWidth': '350px',
-                    'maxWidth': '600px',
-                    'padding': '10px',
-                    'boxSizing': 'border-box',
-                    'flexShrink': '0'
-                }),
-        
-                # Right: Age Distribution
-                html.Div([
-                    dcc.RadioItems(
-                        id='age_gender_selector',
-                        options=[
-                            {'label': 'All', 'value': 'All'},
-                            {'label': 'Male', 'value': 'Male'},
-                            {'label': 'Female', 'value': 'Female'}
-                        ],
-                        value='All',
-                        labelStyle={'display': 'inline-block', 'marginRight': '20px'},
-                        style={'marginBottom': '20px', 'textAlign': 'center'}
-                    ),
-                    dcc.Graph(id='age_distribution_graph', config={'responsive': True})
-                ], style={
-                    'width': '49%',
-                    'minWidth': '350px',
-                    'maxWidth': '600px',
-                    'padding': '10px',
-                    'boxSizing': 'border-box',
-                    'flexShrink': '0'
-                }),
             ], style={
-                'display': 'flex',
-                'flexDirection': 'row',
-                'flexWrap': 'wrap',
-                'justifyContent': 'space-between',
-                'alignItems': 'flex-start',
-                'width': '100%',
-                'maxWidth': '1200px',
-                'margin': '0 auto'
-            })
-        ], style={'width': '100%'})
-
-
-        html.Br(), 
-
-        html.Div([
-            html.H2("Immigration Overview", style={
-                'fontSize': '26px',
-                'color': '#333',
-                'marginBottom': '20px',
-                'textAlign': 'center'
+                'flex': '1 1 250px',
+                'minWidth': '240px',
+                'maxWidth': '280px',
+                'alignSelf': 'flex-start'
             }),
 
             html.Div([
-                # === Info Box ===
-                html.Div([
-                    html.Div(id='foreign_born_box', style={
-                        'backgroundColor': '#ffffff',
-                        'padding': '20px',
-                        'borderRadius': '10px',
-                        'boxShadow': '0 4px 12px rgba(0, 0, 0, 0.06)',
-                        'textAlign': 'center',
-                        'border': '1px solid #e1e1e1',
-                        'fontSize': '16px',
-                        'color': '#333'
-                        # Removed 'height': '100%'
-                    })
-                ], style={
-                    'flex': '1 1 250px',
-                    'minWidth': '240px',
-                    'maxWidth': '280px',
-                    'alignSelf': 'flex-start'  # Prevents it from stretching vertically
-                }),
-
-
-                # === Immigration Over Time Chart ===
-                html.Div([
-                    dcc.Graph(
-                        id='immigration_over_time',
-                        config={'displayModeBar': False},
-                        style={'height': '400px', 'width': '100%'}
-                    )
-                ], style={
-                    'flex': '2 1 400px',
-                    'minWidth': '350px',
-                    'maxWidth': '500px'
-                }),
-
-                # === Immigration by Continent ===
-                html.Div([
-                    dcc.Dropdown(
-                        id="continent_selector",
-                        options=[
-                            {'label': label, 'value': value}
-                            for label, value in [
-                                ('Asia', 'asia'), ('Europe', 'europe'), ('Africa', 'africa'),
-                                ('Americas', 'americas'), ('Oceania', 'oceania')
-                            ]
-                        ],
-                        value='asia',
-                        placeholder="Select a continent",
-                        style={'marginBottom': '15px'}
-                    ),
-                    dcc.Graph(
-                        id='immigration_by_continent',
-                        config={'displayModeBar': False},
-                        style={'height': '400px', 'width': '100%'}
-                    )
-                ], style={
-                    'flex': '2 1 400px',
-                    'minWidth': '350px',
-                    'maxWidth': '500px'
-                }),
-
+                dcc.Graph(
+                    id='immigration_over_time',
+                    config={'displayModeBar': False},
+                    style={'height': '400px', 'width': '100%'}
+                )
             ], style={
-                'display': 'flex',
-                'flexWrap': 'wrap',
-                'gap': '25px',
-                'justifyContent': 'center',
-                'padding': '20px',
-                'backgroundColor': '#f9f9f9',
-                'borderRadius': '8px',
-                'boxShadow': '0 2px 8px rgba(0,0,0,0.03)'
+                'flex': '2 1 400px',
+                'minWidth': '350px',
+                'maxWidth': '500px'
+            }),
+
+            html.Div([
+                dcc.Dropdown(
+                    id="continent_selector",
+                    options=[
+                        {'label': label, 'value': value}
+                        for label, value in [
+                            ('Asia', 'asia'), ('Europe', 'europe'), ('Africa', 'africa'),
+                            ('Americas', 'americas'), ('Oceania', 'oceania')
+                        ]
+                    ],
+                    value='asia',
+                    placeholder="Select a continent",
+                    style={'marginBottom': '15px'}
+                ),
+                dcc.Graph(
+                    id='immigration_by_continent',
+                    config={'displayModeBar': False},
+                    style={'height': '400px', 'width': '100%'}
+                )
+            ], style={
+                'flex': '2 1 400px',
+                'minWidth': '350px',
+                'maxWidth': '500px'
             })
-        ])
 
+        ], style={
+            'display': 'flex',
+            'flexWrap': 'wrap',
+            'gap': '25px',
+            'justifyContent': 'center',
+            'padding': '20px',
+            'backgroundColor': '#f9f9f9',
+            'borderRadius': '8px',
+            'boxShadow': '0 2px 8px rgba(0,0,0,0.03)'
+        })
+    ])
 
+], style={
+    'textAlign': 'center',
+    'width': '100%',
+    'maxWidth': '1400px',
+    'margin': '0 auto'
+})
 
-],
-style={'text-align':'center', 'display':'inline-block', 'width':'100%'}
-)
 
 
 house_income = scrape_data(metro_str, ["NAME", "B19013_001E"], ["Name", "Median_Household_Income", "GEOID"])
@@ -2624,6 +2615,7 @@ if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0', port=10000)
     ## app.run(debug = True, port = 7117)
     
+
 
 
 
