@@ -24,5 +24,15 @@ This page provides more in-depth analytics about each MSA, including time series
 
 
 # Economy
-This page pulls live data from the Federal Reserve Economic Database to see Employment Trends. This required utilizing the operating system to cache the data, and then to update the data after a certain period. The top of the page will show two graphs, unemployment rates, and total non-farm workers in the MSA. All trends are nuanced; however, there is generally a large spike in unemployment and a large dip in nonfarm workers in 2020 due to the COVID-19 pandemic. The page also shows family income distributions that can be filtered by race, aswell as historical poverty rates. Generally, poverty has reduced substantially in all metropolitan areas from my analysis, which shows the American Economy has been doing well. The last section shows a pie chart of where/what industries people work in. It is very clear from this chart, that the majority of people in metropolitan areas work for private companies, education, and health services.
+This page pulls live data from the Federal Reserve Economic Database to see Employment Trends. This required utilizing the operating system to cache the data, and then to update the data after a certain period. The top of the page will show two graphs, unemployment rates, and total non-farm workers in the MSA. All trends are nuanced; however, there is generally a large spike in unemployment and a large dip in nonfarm workers in 2020 due to the COVID-19 pandemic. The page also shows family income distributions that can be filtered by race, aswell as historical poverty rates. Generally, poverty has reduced substantially in all metropolitan areas from my analysis, which shows the American Economy has been doing well. The last section shows a pie chart of where/what industries people work in. It is very clear from this chart that the majority of people in metropolitan areas work for private companies, education, and health services.
 <img width="1535" height="856" alt="Image" src="https://github.com/user-attachments/assets/100d33a7-b8e9-4e4e-bba9-40cca29b8b79" />
+
+# Social
+This last page adds some extra details and information. It displays how many households and family households there are in the area. After, it shows the common languages that families speak at home. Places in New York are very linguistically diverse, whereas smaller MSAs predominantly speak English at home. The last section shows educational attainment and earnings by people with each type of educational level. In every metropolitan area, college-educated people tend to earn more than those without one.
+<img width="1477" height="866" alt="Image" src="https://github.com/user-attachments/assets/06c1c701-f579-47df-9ef8-effdf5f0b24d" />
+
+# Deployment
+To deploy this application, I used Render, which interacts with this repository to deploy it on its server, which is free.
+
+# Thank you!
+
