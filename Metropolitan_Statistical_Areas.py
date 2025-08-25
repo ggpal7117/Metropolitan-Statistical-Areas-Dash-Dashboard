@@ -169,7 +169,19 @@ def load_or_process_region_df(region_name: str, region_df: pd.DataFrame, met_str
 # This Section is stricly for GETTING DATA, preprocessing that data, and merging data frames
 
 # Population -- Wikepedia
-msa_pop = pd.read_html("https://en.wikipedia.org/wiki/Metropolitan_statistical_area")[1][:100]
+# msa_pop = pd.read_html("https://en.wikipedia.org/wiki/Metropolitan_statistical_area")[1][:100]
+
+
+url = 'https://en.wikipedia.org/wiki/Metropolitan_statistical_area'
+headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+}
+
+response = requests.get(url, headers=headers)
+tables = pd.read_html(response.text)
+
+msa_pop = tables[1]
+
 msa_pop = msa_pop[msa_pop.columns[:2]]
 msa_pop.columns = ["Name", "Population_2024"]
 msa_pop['Name'] = msa_pop.Name.str[:-4]
@@ -2615,6 +2627,7 @@ if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0', port=10000)
     ## app.run(debug = True, port = 7117)
     
+
 
 
 
